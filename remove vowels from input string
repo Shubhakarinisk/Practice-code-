@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main {
+    public static String removeVowels(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            char lowerCh = Character.toLowerCase(ch);
+            if (lowerCh != 'a' && lowerCh != 'e' && lowerCh != 'i' && lowerCh != 'o' && lowerCh != 'u') {
+                result.append(ch);
+            }
+        }
+        return result.toString();
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter a string:");
+        String input = s.nextLine();
+        System.out.println("Result: " + removeVowels(input));
+        s.close();
+    }
+}
