@@ -1,0 +1,57 @@
+import java.util.LinkedList;
+import java.util.Queue;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+public class Main {
+    public static TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        if (root1 == null) return root2;
+        if (root2 == null) return root1;
+        root1.val += root2.val;
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
+        return root1;
+    }
+    public static void printLevelOrder(TreeNode root) {
+        if (root == null) {
+            System.out.println("Empty Tree");
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            if (current != null) {
+                System.out.print(current.val + " ");
+                queue.add(current.left);
+                queue.add(current.right);
+            } else {
+                System.out.print("null ");
+            }
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        TreeNode t1 = new TreeNode(1);
+        t1.left = new TreeNode(3);
+        t1.right = new TreeNode(2);
+        t1.left.left = new TreeNode(5);
+        TreeNode t2 = new TreeNode(2);
+        t2.left = new TreeNode(1);
+        t2.right = new TreeNode(3);
+        t2.left.right = new TreeNode(4);
+        t2.right.right = new TreeNode(7);
+        System.out.print("Tree 1 (Level Order): ");
+        printLevelOrder(t1);
+        System.out.print("Tree 2 (Level Order): ");
+        printLevelOrder(t2);
+        TreeNode mergedRoot = mergeTrees(t1, t2);
+        System.out.print("Merged Tree (Level Order): ");
+        printLevelOrder(mergedRoot);
+    }
+}
