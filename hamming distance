@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Main { 
+    public static int getHammingDistance(int x, int y) {
+        int xorResult = x ^ y;
+        int distance = 0;
+        while (xorResult > 0) {
+            xorResult = xorResult & (xorResult - 1);
+            distance++;
+        }    
+        return distance;
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);   
+        int num1 = s.nextInt();
+        int num2 = s.nextInt();
+        System.out.println(getHammingDistance(num1, num2));
+        s.close();
+    }
+}
