@@ -1,0 +1,21 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int [] arr=new int[n];
+        for (int i=0;i<n;i++){
+            arr[i]=s.nextInt();
+        }
+        int a=0;
+        for (int i=0;i<n;i++){
+            a+=arr[i];
+        }
+        System.out.println("Sum"+a);
+        System.out.println("Average" + (a/n));
+        System.out.println("Minimum"+ Arrays.stream(arr).min().getAsInt());
+        System.out.println("Minimum"+ Arrays.stream(arr).max().getAsInt());
+    }
+}
