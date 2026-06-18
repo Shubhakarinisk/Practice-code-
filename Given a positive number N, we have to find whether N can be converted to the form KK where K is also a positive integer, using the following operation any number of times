@@ -1,0 +1,32 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n=s.nextInt();
+        int a=0;
+        for(int i=1;i<=n;i++){
+            double k=Math.pow(i,2);
+            if(k<=n){
+                double j=n-k;
+                double sq=Math.sqrt(j);
+                int rq=(int)Math.floor(sq);
+                if(j==Math.pow(rq,rq)){
+                    a=1;
+                    break;
+                }
+                else{
+                    continue;
+                }
+                
+            }
+        }
+        if(a==1){
+            System.out.println("yes");
+        }
+        else{
+            System.out.println("no");
+        }
+        
+        
+    }
+}
